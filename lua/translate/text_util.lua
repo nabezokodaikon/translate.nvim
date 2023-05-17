@@ -1,5 +1,32 @@
 local M = {}
 
+M.split = function(text)
+  local text_lines = {}
+  for line in text:gmatch("[^\n]+") do
+    table.insert(text_lines, line)
+  end
+  return text_lines 
+end
+
+M.remove_last_line = function(str)
+  local letters = {}
+  for let in string.gmatch(str, ".") do
+    table.insert(letters, let)
+  end
+
+  local i = #letters
+  while i >= 0 do
+    if letters[i] == "\n" then
+      letters[i] = nil
+      break
+    end
+    letters[i] = nil
+    i = i - 1
+  end
+  return table.concat(letters)
+end
+
+
 M.unpack_args = function(args_string)
   if args_string == nil then
     return {}

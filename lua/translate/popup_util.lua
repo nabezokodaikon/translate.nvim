@@ -1,3 +1,5 @@
+local text_util = require("translate.text_util")
+
 M = {}
 
 local popup_win
@@ -8,18 +10,10 @@ function close_popup_window()
   end
 end
 
-local function split(text)
-  local text_lines = {}
-  for line in text:gmatch("[^\n]+") do
-    table.insert(text_lines, line)
-  end
-  return text_lines 
-end
-
 M.show_popup = function(text)
 
   -- 文字列を改行を区切りにテーブル化。
-  local text_lines = split(text)
+  local text_lines = text_util.split(text)
 
   -- ポップアップウィンドウの作成と設定。
   local popup_buf = vim.api.nvim_create_buf(false, true)
