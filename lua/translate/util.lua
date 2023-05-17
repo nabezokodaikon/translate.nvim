@@ -35,6 +35,11 @@ M.unpack_args = function(args_string)
 end
 
 M.get_visual_selection = function()
+	local ESC_FEEDKEY = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+	vim.api.nvim_feedkeys(ESC_FEEDKEY, "n", true)
+	vim.api.nvim_feedkeys("gv", "x", false)
+	vim.api.nvim_feedkeys(ESC_FEEDKEY, "n", true)
+
   local s_start = vim.fn.getpos("'<")
   local s_end = vim.fn.getpos("'>")
   local n_lines = math.abs(s_end[2] - s_start[2]) + 1
