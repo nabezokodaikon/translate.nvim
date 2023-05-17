@@ -12,6 +12,7 @@ vim.api.nvim_create_user_command(
     local src_text = util.get_visual_selection() 
     local dest_text = util.run_command(src_text, args[0], args[1])
     print(dest_text)
+    vim.fn.setreg("+", dest_text)
   end,
   {
     nargs = "*",
