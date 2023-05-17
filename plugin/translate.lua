@@ -5,7 +5,7 @@ end
 vim.g.loaded_translate = true
 
 vim.api.nvim_create_user_command(
-  "TranslateJa2En",
+  "Translate",
   function(opts)
     local util = require("translate.util")
     local args = util.unpack_args(opts.args)
