@@ -1,8 +1,8 @@
-if vim.g.loaded_translate then
+if not vim.g.loaded_translate then
+  vim.g.loaded_translate = true
+else
   return
 end
-
-vim.g.loaded_translate = true
 
 vim.api.nvim_create_user_command(
   "Translate",
