@@ -13,6 +13,7 @@ vim.api.nvim_create_user_command(
     local dest_text = util.run_command(src_text, args[0], args[1])
     print(dest_text)
     vim.fn.setreg("+", dest_text)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
   end,
   {
     nargs = "*",
