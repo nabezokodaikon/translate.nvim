@@ -67,6 +67,7 @@ M.remove_last_line = function(str)
     letters[i] = nil
     i = i - 1
   end
+
   return table.concat(letters)
 end
 
@@ -100,12 +101,14 @@ M.get_visual_selection = function()
   if lines[1] == nil then
     return ""
   end
+
   lines[1] = string.sub(lines[1], s_start[3], -1)
   if n_lines == 1 then
     lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
   else
     lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
   end
+
   return table.concat(lines, '\n')
 end
 
