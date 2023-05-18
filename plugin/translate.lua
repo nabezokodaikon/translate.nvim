@@ -15,6 +15,9 @@ vim.api.nvim_create_user_command(
 
     -- 選択範囲の文字列を取得する。
     local src_text = text_util.get_visual_selection() 
+    if #src_text == 0 then
+      return
+    end
 
     -- 翻訳結果を取得する。
     local dest_text = command_util.run_command(src_text, args[0], args[1])
