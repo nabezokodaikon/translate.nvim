@@ -10,10 +10,10 @@ repo = 'nabezokodaikon/translate.nvim'
 
 ## Usage
 1. Select the text to translate.
-1. Running `Translate` command.
+2. Running `Translate` command.
   * The first argument specifies the language of the selected string. .
   * The second argument specifies the language to translate.
-1. The translated text is popup window.
+3. The translated text is popup window.
   * Translated text is added to yank.
 
 ## Example
