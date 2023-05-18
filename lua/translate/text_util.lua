@@ -1,5 +1,49 @@
 local M = {}
 
+local function is_half_width(num)
+  if num < 127 then
+    return true
+  elseif num < 161 then
+    return false
+  elseif num < 224 then
+    return true
+  else
+    return false
+  end
+end
+
+local function get_length(str)
+  if str:len() == 0 then
+    return 0 
+  end
+
+  local count = 0
+  local byte = {str:byte(1, str:len())}
+  while 0 < #byte do
+    local code = table.remove(byte, 1)
+    count = count + 1
+    if not is_half_width(code) then
+      table.remove(byte, 1)
+      table.remove(byte, 1)
+      count = count + 1
+    end
+  end
+
+  return count
+end
+
+M.get_maximum_length = function(lines)
+  local maximum_len = 0
+  for _, line in ipairs(lines) do
+    local len = get_length(line)
+    if len > maximum_len then
+      maximum_len = len
+    end
+  end
+
+  return maximum_len
+end
+
 M.split = function(text)
   local text_lines = {}
   for line in text:gmatch("[^\n]+") do
